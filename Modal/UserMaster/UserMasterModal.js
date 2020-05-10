@@ -1,32 +1,42 @@
 const UserMasterModel = require("./UserMasterSchema");
 const ErrorHandling = require("../../Utility/ErrorHandling/ErrorHandling");
-const saveAs = require("file-saver");
-var multer = require("multer");
-var storage = multer.diskStorage({
-  destination: function(req, file, callback) {
-    callback(null, "Uploads");
-  },
-  filename: function(req, file, callback) {
-    callback(null, file.fieldname + "-" + Date.now());
-  }
-});
-var upload = multer({ storage: storage }).single("image");
+const Common = require("../Common/Common");
+var mongoose = require("mongoose");
+
 class UserMasterModal {
-  AddUser(req, response) {
-    console.log(req.params)
-    response.json({err:req.params})
-    return
-    // response.json({data:req})
-    // return
-    //console.log(saveAs.saveAs())
-    new UserMasterModel({ firstName: "data", lastNameName: "ds" })
-      .save()
-      .then(res => {
-        response.json(ErrorHandling.Success(res, "Data inserted"));
-      })
-      .catch(err => {
-        response.json(ErrorHandling.Error(err));
-      });
+  async AddUser(req, response, next) {
+    try {
+      var result = await UserMasterModel(req.body).save();
+      response.json(ErrorHandling.Success(result, "Data inserted"));
+    } catch (err) {
+      response.json(ErrorHandling.Error(err, "Error"));
+    }
+  }
+  async UpdateUser(result) {
+    try {
+      await UserMasterModal({ _id: result.id }).updateOne(result);
+      return true;
+    } catch (err) {
+      return false;
+    }
+  }
+  async ProfilePhotoUpload(file) {
+    try {
+      let result = await file.userPhoto.mv(
+        `./Upload/${Math.random() * 10000000000000}${file.name}`
+      );
+      return true;
+    } catch (err) {
+      return false;
+    }
+  }
+  async DeleteUser(record) {
+    try {
+      let result = await UserMasterModel.findOneAndDelete(record);
+      return true;
+    } catch (error) {
+      return false;
+    }
   }
 }
 module.exports = new UserMasterModal();

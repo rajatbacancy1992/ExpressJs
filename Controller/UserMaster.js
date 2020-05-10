@@ -1,9 +1,9 @@
-const UserMasterModal=require("../Modal/UserMaster/UserMasterModal")
+
+const UserMasterModal = require("../Modal/UserMaster/UserMasterModal");
+
 class UserMaster {
-  AddUser(req, res) {
-    console.log(req.body)
-    res.json({"sds":"sds"})
-    //UserMasterModal.AddUser(req,res)
+  AddUser(req, res,next) {
+    UserMasterModal.AddUser(req,res,next)
   }
 }
 module.exports = new UserMaster();
