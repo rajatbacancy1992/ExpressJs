@@ -3,5 +3,5 @@ module.exports.Success = (response, message) => {
 };
 
 module.exports.Error = (response, message) => {
-  return { data: response, error: true, message: message };
+  return { data: response, error: true, message: message, status: 200 };
 };

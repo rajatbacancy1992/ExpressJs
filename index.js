@@ -2,6 +2,10 @@ const express = require('express')
 const app = express();
 var fileUpload=require("express-fileupload")
 app.use(fileUpload())
+var cors = require('cors')
+app.use(cors())
+
+
 const formData = require("express-form-data");
 const os = require("os");
 const port = 3001;

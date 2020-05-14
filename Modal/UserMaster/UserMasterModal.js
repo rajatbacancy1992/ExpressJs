@@ -38,5 +38,23 @@ class UserMasterModal {
       return false;
     }
   }
+  async UserExist(req,response) {
+    try {
+      let result = await UserMasterModel.find(req);
+      console.log(result)
+      if (result.length > 0) {
+        response.json(ErrorHandling.Success(result[0], "Login successfully"));
+      } else {
+        response.json(
+          ErrorHandling.Error(result, "You have Entred wrong email or password ")
+        );
+      }
+      return result;
+    } catch (err) {
+      response.json(
+        ErrorHandling.Error(err, "There are some technical issue.")
+      );
+    }
+  }
 }
 module.exports = new UserMasterModal();

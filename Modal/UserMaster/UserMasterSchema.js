@@ -1,9 +1,10 @@
 var mongoose = require("mongoose");
 var nameSchema = new mongoose.Schema({
-  firstName: String,
-  lastName: String,
-  emailAddress: String,
-  mobileNumber: String,
-  address: {type:String,required:true},
+  fisrt_name: String,
+  last_name: String,
+  mobile_number: String,
+  address: String,
+  email_address: String,
+  password:String
 });
 module.exports = mongoose.model("user_master", nameSchema);
