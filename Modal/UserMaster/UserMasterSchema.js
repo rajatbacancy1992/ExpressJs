@@ -20,4 +20,4 @@ var nameSchema = new mongoose.Schema({
   mother_occuption: String,
   mother_income: String,
 });
-module.exports = mongoose.model("user_master", nameSchema);
+module.exports = mongoose.model("user_masters", nameSchema);
