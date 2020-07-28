@@ -3,7 +3,7 @@ var mongoose = require("mongoose");
   //Set up default mongoose connection
   
   var mongoDB =
-    "mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&ssl=false";
+    "mongodb+srv://rajat:Bacancy@123@cluster0-9jwjh.mongodb.net/wedding?retryWrites=true&w=majority";
     module.exports = mongoose.connect(mongoDB, {
       useNewUrlParser: true,
       useUnifiedTopology: true
