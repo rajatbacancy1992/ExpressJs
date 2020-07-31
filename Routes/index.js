@@ -8,4 +8,7 @@ module.exports = (app) => {
   app.get(`/user-list`, UserMaster.AllUserList);
   app.post(`/get-user-detail-by-id`, UserMaster.GetUserDetail);
   app.post(`/profile-photo-upload`, UserMaster.ProfilePhotoUpload);
+  app.post(`/register-user-verification`, UserMaster.OtpVerify);
+  app.post(`/forgot-password`, UserMaster.ForgotPassword);
+  app.post(`/change-password`, UserMaster.ChangePassword);
 };

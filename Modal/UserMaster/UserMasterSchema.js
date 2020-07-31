@@ -19,5 +19,10 @@ var nameSchema = new mongoose.Schema({
   mother_name: String,
   mother_occuption: String,
   mother_income: String,
+  verify: { type: Boolean, default: false },
+  active: { type: Boolean, default: true },
+  create_date: { type: Date, default: new Date() },
+  update_date: { type: Date, default: new Date() },
+  token: { type: String },
 });
 module.exports = mongoose.model("user_masters", nameSchema);
